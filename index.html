@@ -1,26 +1,35 @@
-<!doctype html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Image Targets</title><meta itemprop="name" content="Image Targets"><meta name="twitter:title" content="Image Targets"><meta property="og:title" content="Image Targets"><meta property="og:site_name" content="Image Targets"><meta name="description" content="This project demonstrates how to use Image Targets to anchor virtual content to images in the real world."><meta itemprop="description" content="This project demonstrates how to use Image Targets to anchor virtual content to images in the real world."><meta property="og:description" content="This project demonstrates how to use Image Targets to anchor virtual content to images in the real world."><meta name="twitter:description" content="This project demonstrates how to use Image Targets to anchor virtual content to images in the real world."><script crossorigin="anonymous" src="./external/runtime/runtime.js"></script><script src="https://cdn.jsdelivr.net/npm/@8thwall/engine-binary@1/dist/xr.js" async crossorigin="anonymous" data-preload-chunks="slam"></script><script src="https://cdn.jsdelivr.net/npm/@8thwall/landing-page@1/dist/landing-page.js" crossorigin="anonymous"></script><meta property="og:image" content="https://8thwall.org/studio-image-targets-example/assets/preview.png"><script>const observer = new MutationObserver(() => {
+<!doctype html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Image Targets</title><meta itemprop="name" content="Image Targets"><meta name="twitter:title" content="Image Targets"><meta property="og:title" content="Image Targets"><meta property="og:site_name" content="Image Targets"><meta name="description" content="This project demonstrates how to use Image Targets to anchor virtual content to images in the real world."><meta itemprop="description" content="This project demonstrates how to use Image Targets to anchor virtual content to images in the real world."><meta property="og:description" content="This project demonstrates how to use Image Targets to anchor virtual content to images in the real world."><meta name="twitter:description" content="This project demonstrates how to use Image Targets to anchor virtual content to images in the real world."><script crossorigin="anonymous" src="./external/runtime/runtime.js"></script><script src="https://cdn.jsdelivr.net/npm/@8thwall/engine-binary@1/dist/xr.js" async crossorigin="anonymous" data-preload-chunks="slam"></script><script src="https://cdn.jsdelivr.net/npm/@8thwall/landing-page@1/dist/landing-page.js" crossorigin="anonymous"></script><meta property="og:image" content="https://8thwall.org/studio-image-targets-example/assets/preview.png"><script>let permissionPromptInDom = false
+
+    const permissionObserver = new MutationObserver(() => {
       const promptBox = document.querySelector('.prompt-box-8w')
 
-      if (!promptBox) return
+      if (promptBox && !permissionPromptInDom) {
+        const message = promptBox.querySelector('p')
+        const cancelButton = promptBox.querySelector('.prompt-button-8w')
+        const primaryButton = promptBox.querySelector('.button-primary-8w')
 
-      const message = promptBox.querySelector('p')
-      const buttons = promptBox.querySelectorAll('.prompt-button-8w')
+        if (message) {
+          message.textContent =
+            'ARを体験するには、端末のセンサーへのアクセスが必要です。'
+        }
 
-      if (message) {
-        message.textContent =
-          'ARを体験するには、端末のセンサーへのアクセスが必要です。'
+        if (cancelButton) {
+          cancelButton.textContent = 'キャンセル'
+        }
+
+        if (primaryButton) {
+          primaryButton.textContent = 'ARを開始する'
+        }
+
+        permissionPromptInDom = true
       }
 
-      if (buttons[0]) {
-        buttons[0].textContent = 'キャンセル'
-      }
-
-      if (buttons[1]) {
-        buttons[1].textContent = 'ARを開始'
+      if (!promptBox) {
+        permissionPromptInDom = false
       }
     })
 
-    observer.observe(document.body, {
+    permissionObserver.observe(document.body, {
       childList: true,
       subtree: true,
     })</script><style>.prompt-box-8w {
