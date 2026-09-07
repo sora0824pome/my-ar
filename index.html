@@ -38,7 +38,7 @@
 
   .button-primary-8w {
     background-color: #2f47c6;
-  }</style></head><body><script>let permissionPromptInDom = false
+  }</style></head><body><script src="bundle.js"></script><script>let permissionPromptInDom = false
 
     const permissionObserver = new MutationObserver(() => {
       const promptBox = document.querySelector('.prompt-box-8w')
@@ -73,4 +73,4 @@
     permissionObserver.observe(document.body, {
       childList: true,
       subtree: true,
-    })</script><script src="bundle.js"></script></body></html>
+    })</script></body></html>
