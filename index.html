@@ -1,38 +1,4 @@
-<!doctype html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Image Targets</title><meta itemprop="name" content="Image Targets"><meta name="twitter:title" content="Image Targets"><meta property="og:title" content="Image Targets"><meta property="og:site_name" content="Image Targets"><meta name="description" content="This project demonstrates how to use Image Targets to anchor virtual content to images in the real world."><meta itemprop="description" content="This project demonstrates how to use Image Targets to anchor virtual content to images in the real world."><meta property="og:description" content="This project demonstrates how to use Image Targets to anchor virtual content to images in the real world."><meta name="twitter:description" content="This project demonstrates how to use Image Targets to anchor virtual content to images in the real world."><script crossorigin="anonymous" src="./external/runtime/runtime.js"></script><script src="https://cdn.jsdelivr.net/npm/@8thwall/engine-binary@1/dist/xr.js" async crossorigin="anonymous" data-preload-chunks="slam"></script><script src="https://cdn.jsdelivr.net/npm/@8thwall/landing-page@1/dist/landing-page.js" crossorigin="anonymous"></script><meta property="og:image" content="https://8thwall.org/studio-image-targets-example/assets/preview.png"><script>let permissionPromptInDom = false
-
-    const permissionObserver = new MutationObserver(() => {
-      const promptBox = document.querySelector('.prompt-box-8w')
-
-      if (promptBox && !permissionPromptInDom) {
-        const message = promptBox.querySelector('p')
-        const cancelButton = promptBox.querySelector('.prompt-button-8w')
-        const primaryButton = promptBox.querySelector('.button-primary-8w')
-
-        if (message) {
-          message.textContent =
-            'ARを体験するには、端末のセンサーへのアクセスが必要です。'
-        }
-
-        if (cancelButton) {
-          cancelButton.textContent = 'キャンセル'
-        }
-
-        if (primaryButton) {
-          primaryButton.textContent = 'ARを開始する'
-        }
-
-        permissionPromptInDom = true
-      }
-
-      if (!promptBox) {
-        permissionPromptInDom = false
-      }
-    })
-
-    permissionObserver.observe(document.body, {
-      childList: true,
-      subtree: true,
-    })</script><style>.prompt-box-8w {
+<!doctype html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Image Targets</title><meta itemprop="name" content="Image Targets"><meta name="twitter:title" content="Image Targets"><meta property="og:title" content="Image Targets"><meta property="og:site_name" content="Image Targets"><meta name="description" content="This project demonstrates how to use Image Targets to anchor virtual content to images in the real world."><meta itemprop="description" content="This project demonstrates how to use Image Targets to anchor virtual content to images in the real world."><meta property="og:description" content="This project demonstrates how to use Image Targets to anchor virtual content to images in the real world."><meta name="twitter:description" content="This project demonstrates how to use Image Targets to anchor virtual content to images in the real world."><script crossorigin="anonymous" src="./external/runtime/runtime.js"></script><script src="https://cdn.jsdelivr.net/npm/@8thwall/engine-binary@1/dist/xr.js" async crossorigin="anonymous" data-preload-chunks="slam"></script><script src="https://cdn.jsdelivr.net/npm/@8thwall/landing-page@1/dist/landing-page.js" crossorigin="anonymous"></script><meta property="og:image" content="https://8thwall.org/studio-image-targets-example/assets/preview.png"><style>.prompt-box-8w {
       font-family: 'Nunito-SemiBold', 'Nunito', sans-serif;
       position: fixed;
       left: 50%;
@@ -72,4 +38,39 @@
 
   .button-primary-8w {
     background-color: #2f47c6;
-  }</style></head><body><script src="bundle.js"></script></body></html>
+  }</style></head><body><script>let permissionPromptInDom = false
+
+    const permissionObserver = new MutationObserver(() => {
+      const promptBox = document.querySelector('.prompt-box-8w')
+
+      if (promptBox && !permissionPromptInDom) {
+
+        const message = promptBox.querySelector('p')
+        const cancelButton = promptBox.querySelector('.prompt-button-8w')
+        const primaryButton = promptBox.querySelector('.button-primary-8w')
+
+        if (message) {
+          message.textContent =
+            'ARを体験するには、端末のセンサーへのアクセスが必要です。'
+        }
+
+        if (cancelButton) {
+          cancelButton.textContent = 'キャンセル'
+        }
+
+        if (primaryButton) {
+          primaryButton.textContent = 'ARを開始'
+        }
+
+        permissionPromptInDom = true
+      }
+
+      if (!promptBox) {
+        permissionPromptInDom = false
+      }
+    })
+
+    permissionObserver.observe(document.body, {
+      childList: true,
+      subtree: true,
+    })</script><script src="bundle.js"></script></body></html>
